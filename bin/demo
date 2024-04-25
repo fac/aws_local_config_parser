@@ -1,0 +1,62 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/aws_local_config_parser'
+
+require 'debug'
+require 'pastel'
+
+config = AwsLocalConfigParser.new
+pastel = Pastel.new
+
+puts pastel.bold.blue('Profile:')
+
+puts pastel.bold.magenta('fa-ci-stage') + pastel.bold.green(' [SSO Profile]')
+stage = config.profile('fa-ci-stage')
+puts "\tsso_session: #{stage.sso_session}"
+puts "\tsso_account_id: #{stage.sso_account_id}"
+puts "\tsso_role_name: #{stage.sso_role_name}"
+puts "\tregion: #{stage.region}"
+
+begin
+  puts "\n"
+  puts pastel.bold.magenta('component-finder-uploader') + pastel.bold.green(' [Access Key+Secret Profile]')
+  non_sso_profile = config.profile('component-finder-uploader')
+  puts "\taws_access_key_id: #{non_sso_profile.aws_access_key_id}"
+  puts "\taws_secret_access_key: #{non_sso_profile.aws_secret_access_key}"
+  puts "\tregion: #{non_sso_profile.region}"
+rescue AwsLocalConfigParser::NoMatchingProfile => e
+  puts pastel.bold.red 'No local Access Key+Secret Profile to demo'
+  puts pastel.bold.red e.message.to_s
+end
+
+puts "\n"
+puts pastel.bold.blue('SSO Session:')
+puts pastel.bold.magenta('fa-sso')
+sso_session = config.sso_session('fa-sso')
+puts "\tsso_start_url: #{sso_session.sso_start_url}"
+puts "\tsso_registration_scopes: #{sso_session.sso_registration_scopes}"
+puts "\tsso_region: #{sso_session.sso_region}"
+
+puts "\n"
+puts pastel.bold.blue('Custom Errors:')
+begin
+  puts config.profile('non-existant-profile')
+rescue AwsLocalConfigParser::NoMatchingProfile => e
+  puts pastel.bold.red "🚨 #{e.message}"
+end
+
+begin
+  puts config.sso_session('non-existant-sso-session')
+rescue AwsLocalConfigParser::NoMatchingSsoSession => e
+  puts pastel.bold.red "🚨 #{e.message}"
+end
+
+puts "\n"
+puts pastel.bold.blue('SSO Sessions:')
+puts config.all_sso_sessions
+
+puts "\n"
+puts pastel.bold.blue('Profiles:')
+puts config.all_profiles

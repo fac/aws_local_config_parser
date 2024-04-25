@@ -1,0 +1,8 @@
+# https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+
+pre-commit:
+  parallel: true
+  commands:
+    ruby-lint:
+      glob: "*.rb"
+      run: bundle exec rubocop {staged_files}

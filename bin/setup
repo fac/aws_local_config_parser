@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+bundle check || bundle install
+lefthook install -f
+brew bundle
