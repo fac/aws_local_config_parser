@@ -52,7 +52,7 @@ If for some reason it's necessary, it's possible to temporarily skip `lefthook` 
 
 ## Create a new release
 Following [Sematic Versioning](https://semver.org/), bump the version:
-1. `gem bump --version "<sem_ver_bump>"`and merge the changes to `main`
+1. `gem bump --version "<sem_ver_bump>"` and merge the changes to `main`
 1. The [Release and Build Gem](https://github.com/fac/aws_local_config_parser/actions/workflows/release_gem.yml) wokflow will trigger a new version build
 1. Manually create a new [release](https://github.com/fac/int-env-management-module/releases):
   1. Click on `Draft a new release`
