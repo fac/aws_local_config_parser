@@ -50,7 +50,7 @@ config.all_sso_sessions
 
 If for some reason it's necessary, it's possible to temporarily skip `lefthook` with: `LEFTHOOK=0 git commit`.
 
-### Create a new release
+## Create a new release
 Following (Sematic Versioning)[https://semver.org/], bump the version:
 1. `gem bump --version "<sem_ver_bump>"`and merge the changes to `main`
 1. The [Release and Build Gem](https://github.com/fac/aws_local_config_parser/actions/workflows/release_gem.yml) wokflow will trigger a new version build
