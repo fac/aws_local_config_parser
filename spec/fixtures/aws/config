@@ -1,0 +1,40 @@
+# MANAGED SESSION
+[sso-session sso-dev]
+sso_start_url = https://sso-dev.awsapps.com/start/
+sso_region = dev region
+sso_registration_scopes = sso:account:access
+
+# MANAGED SESSION
+[sso-session sso-prod]
+sso_start_url = https://sso-prod.awsapps.com/start/
+sso_region = prod region
+sso_registration_scopes = sso:account:access
+
+# MANAGED PROFILE
+[profile sso-dev-full]
+sso_session = sso-dev
+sso_account_id = account_number_1234
+sso_role_name = sso_account_role_name
+region=dev-profile region
+
+[profile non-sso-profile]
+aws_access_key_id = aws_access_key_id_value
+aws_secret_access_key = aws_secret_access_key_value
+region=dev-profile region
+
+
+## Additional profiles
+
+# MANAGED PROFILE
+[profile sso-stage-full]
+sso_session = sso-stage
+sso_account_id = account_number_1234
+sso_role_name = sso_account_role_name
+region=stage-profile region
+
+# MANAGED PROFILE
+[profile sso-sandbox-full]
+sso_session = sso-sandbox
+sso_account_id = account_number_1234
+sso_role_name = sso_account_role_name
+region=sandbox-profile region

@@ -14,16 +14,6 @@ class AwsLocalConfigParser
     @config = read_config_file
   end
 
-  def read_config_file
-    raise AwsLocalConfigParser::NoAwsConfig.new(config_path:) unless File.exist?(config_path)
-
-    IniFile.load(config_path)
-  end
-
-  def config_hash
-    config.to_h
-  end
-
   def profile(profile_name)
     raise NoMatchingProfile.new(profile_name:, config_path:) unless config.has_section?("profile #{profile_name}")
 
@@ -44,5 +34,17 @@ class AwsLocalConfigParser
   def all_profiles
     list_of_profiles = config_hash.keys.select { |entry| entry.start_with?('profile') }.sort
     list_of_profiles.map { |profile| profile.gsub('profile ', '') }
+  end
+
+  private
+
+  def read_config_file
+    raise AwsLocalConfigParser::NoAwsConfig.new(config_path:) unless File.exist?(config_path)
+
+    IniFile.load(config_path)
+  end
+
+  def config_hash
+    config.to_h
   end
 end
