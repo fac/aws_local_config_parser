@@ -49,3 +49,14 @@ config.all_sso_sessions
 - run `rubocop` for any `ruby` files
 
 If for some reason it's necessary, it's possible to temporarily skip `lefthook` with: `LEFTHOOK=0 git commit`.
+
+### Create a new release
+Following (Sematic Versioning)[https://semver.org/], bump the version:
+1. `gem bump --version "<sem_ver_bump>"`and merge the changes to `main`
+1. The [Release and Build Gem](https://github.com/fac/aws_local_config_parser/actions/workflows/release_gem.yml) wokflow will trigger a new version build
+1. Manually create a new [release](https://github.com/fac/int-env-management-module/releases):
+  1. Click on `Draft a new release`
+  1. In the `Choose a tag` dropdown, selecting the new version
+  1. Click `Generate release notes` and review the notes
+  1. Ensure `Set as the latest release` is checked
+  1. Click `Publish release`
