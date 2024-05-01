@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "Parse your local '\"$HOME\"/.aws/config' file."
   spec.homepage = 'https://github.com/fac/aws_local_config_parser'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 3.1.0'
+  spec.required_ruby_version = '>= 3.1'
 
   spec.metadata['allowed_push_host'] = 'https://rubygems.pkg.github.com/fac'
 
