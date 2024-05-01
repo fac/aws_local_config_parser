@@ -3,7 +3,7 @@
 Parse your local `"$HOME"/.aws/config` to use it within a Ruby script.
 
 ## Up and Running
-1. Checkout this repo: `gh repo clone dmorgan-fa/aws_local_config_parser`
+1. Checkout this repo: `gh repo clone fac/aws_local_config_parser`
 1. Run: `bin/setup`
 1. Run: `bin/demo`
 
