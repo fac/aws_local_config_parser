@@ -12,7 +12,5 @@ group :development, :test do
   gem 'rake'
   gem 'retest'
   gem 'rspec'
-  gem 'rspec-core'
-  gem 'rspec-expectations'
   gem 'rubocop'
 end
