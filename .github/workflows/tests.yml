@@ -1,18 +1,6 @@
 name: Tests
 
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - .editorconfig
-      - .gitignore
-      - .vscode/**
-      - bin/**
-      - Brewfile
-      - lefthook.yml
-      - LICENSE
-      - README.md
   pull_request:
 
 jobs:
@@ -25,5 +13,5 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
-    - name: Run the default task
+    - name: Run tests and rubocop
       run: bundle exec rake
