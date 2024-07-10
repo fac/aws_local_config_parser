@@ -1,0 +1,16 @@
+name: Lint workflow files
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/*.yml'
+      - '.github/workflows/*.yaml'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  actionlint:
+    uses: fac/hermod/.github/workflows/actionlint.yml@master
+    secrets: inherit
