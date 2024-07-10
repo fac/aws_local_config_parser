@@ -3,6 +3,9 @@
 pre-commit:
   parallel: true
   commands:
+    actionlint:
+      glob: ".github/workflows/*.{yml,yaml}"
+      run: actionlint {staged_files}
     ruby-lint:
       glob: "*.rb"
       run: bundle exec rubocop {staged_files}

@@ -47,6 +47,7 @@ config.all_sso_sessions
 ## Making a commit
 [Lefthook](https://github.com/evilmartians/lefthook/) has [been configured](./lefthook.yml) with pre-commit checks to:
 - run `rubocop` for any `ruby` files
+- run `actionlint` for any GitHub workflow files
 
 If for some reason it's necessary, it's possible to temporarily skip `lefthook` with: `LEFTHOOK=0 git commit`.
 

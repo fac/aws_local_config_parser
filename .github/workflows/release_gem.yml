@@ -1,17 +1,15 @@
 name: Build and Release Gem
 on:
-  # This event will only trigger a workflow run if the workflow file is on the default branch.
-  # https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_run
-  workflow_run:
-    workflows: ["Tests"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+    paths:
+      - lib/aws_local_config_parser/version.rb
 
 jobs:
   release:
     name: Release to RubyGems.org
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.ref == 'refs/heads/main' }}
     permissions:
       id-token: write
       contents: write
@@ -22,6 +20,10 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+
+    # Run tests and rubocop
+    - name: Run tests and rubocop
+      run: bundle exec rake
 
     # Release
     - name: Release to RubyGems.org
