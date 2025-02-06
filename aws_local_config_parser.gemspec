@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'inifile', '~> 3'
+  spec.add_dependency 'ostruct'
 end
