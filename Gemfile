@@ -7,6 +7,7 @@ gemspec
 
 group :development, :test do
   gem 'debug'
+  gem 'fiddle'
   gem 'pastel'
   gem 'pry-byebug'
   gem 'rake'
